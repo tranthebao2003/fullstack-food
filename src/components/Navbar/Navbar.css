@@ -1,0 +1,65 @@
+:root{
+    --colorTextMain: #49557e;
+    --fontSizeTextMain: 18px
+}
+
+.navbar{
+    padding: 20px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo{
+    width: 150px;
+}
+
+.navbar-menu{
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    color: var(--colorTextMain);
+    font-size: var(--fontSizeTextMain);
+}
+
+.navbar-right{
+    display: flex;
+    align-items: center;
+    gap: 40px
+}
+
+.navbar button{
+    position: relative;
+    background: transparent;
+    font-size: 18px;
+    border: 1px solid tomato;
+    padding: 10px 30px 12px 30px;
+    border-radius: 14px;
+    cursor: pointer;
+    overflow: hidden;
+    color: tomato;
+    transition: 0.3s ease-in-out;
+}
+
+.navbar button:hover::before{
+    width: 100%;
+    color: tomato;
+}
+
+.navbar button:hover{
+    color: #ffffff;
+}
+
+.navbar button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: rgb(255, 99, 71);
+    transition: 0.3s ease-in-out;
+    z-index: -1;
+}
+
+

@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: 0;
+  scroll-behavior: smooth;
+  font-family: 'Outfit';
+}
+
+body{
+  min-height: 100vh;
+}
+
+a{
+  text-decoration: none;
+  /* màu sắc kế thừa từ phần tử cha của nó */
+  color: inherit;
+}
+
+/* tác dụng lên toàn bộ app */
+.app{
+  width: 80%;
+  margin: auto;
+}
