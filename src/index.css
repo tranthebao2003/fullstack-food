@@ -23,3 +23,17 @@ a{
   width: 80%;
   margin: auto;
 }
+
+@keyframes fadeIn {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+@keyframes animationNavbar {
+  from{width: 0;}
+  to{width: 100%;}
+}

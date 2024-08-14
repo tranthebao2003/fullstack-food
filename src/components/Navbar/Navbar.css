@@ -62,4 +62,51 @@
     z-index: -1;
 }
 
+.navbar .active{
+    position: relative;  
+}
+
+.navbar .active::before{
+    content: '';
+    position: absolute;
+    top: 110%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--colorTextMain);
+    transition: 0.3s ease-in-out;
+    z-index: -1;
+}
+
+.navbar .active:hover::before{
+    /* animationNavbar này là keyframe trong index.css
+    nó là css cha cho toàn bộ app */
+    animation: animationNavbar 0.5s ease-in-out;
+}
+
+.navbar li{
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.navbar li:hover{
+    color: #7d91cc;
+}
+
+.navbar-search-icon{
+    position: relative;
+}
+
+
+.navbar-search-icon .dot{
+    position: absolute;
+    min-width: 10px;
+    min-height: 10px;
+    background-color: tomato;
+    border-radius: 5px;
+    top: -8px;
+    right: -8px;
+}
+
+
 
