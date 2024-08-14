@@ -41,10 +41,6 @@
     transition: 0.3s ease-in-out;
 }
 
-.navbar button:hover::before{
-    width: 100%;
-    color: tomato;
-}
 
 .navbar button:hover{
     color: #ffffff;
@@ -57,9 +53,13 @@
     left: 0;
     width: 0;
     height: 100%;
-    background: rgb(255, 99, 71);
     transition: 0.3s ease-in-out;
     z-index: -1;
+}
+
+.navbar button:hover::before{
+    width: 100%;
+    color: tomato;
 }
 
 .navbar .active{

@@ -27,11 +27,16 @@
 }
 
 .explore-menu-list-item img{
+    position: relative;
     width: 7.5vw;
     min-width: 80px;
     cursor: pointer;
     border-radius: 50%;
-    transition: 0.2s;
+    transition: 0.3s ease-in-out;
+}
+
+.explore-menu-list-item img:hover{
+    opacity: 0.8;
 }
 
 .explore-menu-list-item p{
@@ -39,6 +44,13 @@
     color: #747474;
     font-size: max(1.4vw, 16px);
     cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+/* khi hover vào img thì tác động thẻ p 
+cùng cấp với img*/
+.explore-menu-list-item img:hover ~ p{
+    color: tomato;
 }
 
 .explore-menu hr{
@@ -46,4 +58,12 @@
     height: 2px;
     background-color: #e2e2e2;
     border: none;
+}
+
+.explore-menu-list-item .active{
+    /* bỏ đi animation của border khi có class
+    active */
+    transition: none;
+    border: 4px solid tomato;
+    padding: 1px;
 }
