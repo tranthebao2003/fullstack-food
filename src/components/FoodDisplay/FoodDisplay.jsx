@@ -11,17 +11,16 @@ import FoodItem from '../FoodItem/FoodItem'
 const FoodDisplay = ({category}) => {
 const {food_list} = useContext(StoreContext)
 
+// ở đây khi all (tức là chưa chọn category nào thì nó trả về all)
+// còn khi đã chọn category rồi thì nó sẽ trả về những category phù hợp thôi
   return (
     <div className="food-display" id="food-display">
       <h2>Top dishes near you</h2>
       <div className="food-display-list">
         {food_list.map((item, index) => {
-          return (
-            <FoodItem
-              key={index}
-              item = {item}
-            />
-          );
+          if (category === "All" || category === item.category) {
+            return <FoodItem key={index} item={item} />;
+          }
         })}
       </div>
     </div>

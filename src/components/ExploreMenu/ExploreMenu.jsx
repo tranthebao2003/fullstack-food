@@ -33,7 +33,7 @@ const ExploreMenu = ({category, setCategory}) => {
                   alt=""
                 />
 
-                <p>{item.menu_name}</p>
+                <p className={category === item.menu_name ? "active" : ""}>{item.menu_name}</p>
               </div>
             );
         })}

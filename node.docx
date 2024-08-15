@@ -1,1 +1,23 @@
 dùng "npm create vite": tạo dự án react với vite
+
+Mục đích của cú pháp {[itemId]: value}:
+Tạo khóa động (Dynamic Keys):
+
+Khi bạn muốn sử dụng giá trị của một biến hoặc biểu thức làm tên khóa trong một đối tượng, bạn cần sử dụng cú pháp [].
+Ví dụ: Nếu itemId là "product_123", thì khi sử dụng cú pháp [itemId]: value, đối tượng sẽ có khóa là "product_123".
+Không giới hạn tên khóa:
+
+Thay vì phải cố định tên khóa khi tạo đối tượng, bạn có thể linh hoạt tạo khóa theo giá trị của biến hoặc biểu thức.
+Ví dụ:
+javascript
+
+const keyName = "dynamicKey";
+const myObject = {
+  [keyName]: "This is a dynamic value"
+};
+
+console.log(myObject); // { dynamicKey: 'This is a dynamic value' }
+Trong ví dụ này:
+
+keyName là biến có giá trị "dynamicKey".
+Khi sử dụng [keyName]: "This is a dynamic value", đối tượng myObject sẽ có một khóa tên là "dynamicKey" với giá trị "This is a dynamic value".

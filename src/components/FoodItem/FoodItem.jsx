@@ -1,33 +1,34 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import './FoodItem.css'
 import { assets } from '../../assets/assets'
+import { StoreContext } from '../../context/StoreContext'
 
 const FoodItem = (props) => {
-  const {id, name, price, description,image} = props.item
+  const {_id, name, price, description,image} = props.item
   
   // ở đây ta dùng useState như thế này thì nó sẽ
   // tạo ra số useState tương ứng với số sp
   // như thế không tối ưu, thay vào đó 
   // ta chỉ tạo 1 useState làm global app
   // rồi dùng nó để sử dụng cho foodItem này
-  // thông qua id của các item
-  const [itemCount, setItemCount] = useState(0)
+  // thông qua _id của các item
+  const { cartItems, addToCart, removeFromCart } = useContext(StoreContext);
 
   return (
     <div className="food-item">
       <div className="food-item-img-container">
         <img src={image} alt="" className="food-item-image" />
-        {!itemCount ? (
+        {!cartItems[_id] ? (
           <img
             className="add"
-            onClick={() => setItemCount((prev) => prev + 1)}
+            onClick={() => addToCart(_id)}
             src={assets.add_icon_white}
           />
         ) : (
           <div className="food-item-counter">
-            <img onClick={() => setItemCount(pre => pre - 1)} src={assets.remove_icon_red} alt="" />
-            <p>{itemCount}</p>
-            <img onClick={() => setItemCount(pre => pre + 1)} src={assets.add_icon_green} alt="" />
+            <img onClick={() => removeFromCart(_id)} src={assets.remove_icon_red} alt="" />
+            <p>{cartItems[_id]}</p>
+            <img onClick={() => addToCart(_id)} src={assets.add_icon_green} alt="" />
           </div>
         )}
       </div>
