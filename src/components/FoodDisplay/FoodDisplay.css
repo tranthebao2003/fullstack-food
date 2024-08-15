@@ -9,6 +9,17 @@
 
 .food-display-list{
     display: grid;
+    /* repeat(auto-fill, minmax(240px, 1fr)): Hàm repeat() 
+    cho phép bạn lặp lại mẫu cột nhiều lần. 
+    auto-fill là một từ khóa để trình duyệt 
+    sẽ tự động lặp lại các cột cho đến khi 
+    không còn đủ không gian trong hàng để 
+    chứa thêm cột nào nữa. 
+    đối số thứ 2 trong repeat TH này là kích thước của cột
+
+    minmax cho ta chọn giá trị tối thiểu và tối đa, 1fr nó
+    là đơn vị trong grid nó chiếm 1 phần của không gian còn lại
+    kiểu giống như flex:1, flex:2 ấy*/
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     margin-top: 30px;
     gap: 30px;
