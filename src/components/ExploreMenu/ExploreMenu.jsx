@@ -1,8 +1,22 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import './ExploreMenu.css'
 import { menu_list } from '../../assets/assets'
 
 const ExploreMenu = ({category, setCategory}) => {
+  const listItemRef = useRef()
+
+  const handleWheel = (event) => {
+    event.preventDefault()
+    listItemRef.current.scrollLeft += event.deltaY * 1.2
+  }
+
+  // ở đây ta phải dùng useEffect để gán event, bởi vì
+  // nếu ta gán event và trực tiếp tag thì nó preventDefault()
+  // nó sẽ ko có tác dụng
+  useEffect(() => {
+    listItemRef.current.addEventListener("wheel", handleWheel);
+  },[])
+
   return (
     <div className="explore-menu" id="explore-menu">
       <h1>Explore our menu</h1>
@@ -12,7 +26,7 @@ const ExploreMenu = ({category, setCategory}) => {
         mission is to satisfy your cravings and elevate your dining experience,
         one delicious meal at a time
       </p>
-      <div className="explore-menu-list">
+      <div className="explore-menu-list" ref={listItemRef}>
         {/* index được tạo tự động 
         không được đảo ngược vị trí
         của item và index*/}
