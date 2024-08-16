@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { food_list } from "../assets/assets";
 
 // sử dụng useContext để truyền dữ liệu từ
@@ -52,22 +52,48 @@ const StoreContextProvider = (props) => {
     //     console.log(cartItems)
     // }, [cartItems])
 
+    const getTotalCartAmount = () => {
+        let totalAmount = 0
+        // Vòng lặp for...in được sử dụng để lặp 
+        // qua các thuộc tính của một đối 
+        // tượng trong JavaScript. item
+        // là những thuộc tính trong object cartItems
+        for(const item in cartItems){
+            if (cartItems[item] > 0) {
+              // trả về object thỏa đk
+              let itemInfo = food_list.find((product) => product._id === item);
+              totalAmount += itemInfo.price * cartItems[item];
+            }
+        }
+        return totalAmount
+    }
+
     const contextValue = {
       food_list,
       cartItems,
       setCartItems,
       addToCart,
-      removeFromCart
+      removeFromCart,
+      getTotalCartAmount
     };
 
     // value dùng để chứa dữ liệu, khi muốn dùng 
     // dữ liệu này ở file khác (file con nha)
     // thì dùng useContext ở file con đó
+
+    /* tóm tắt: thay vì thẻ con phải nằm trực tiếp
+    trong thẻ cha rồi thẻ cha trả về, khi đó cha
+    có thể truyền props cho con 1 cách dễ dàng (Header.jsx)
+    thì ở đây thay vì làm thế thì mình dùng {props.children}
+    đại diện cho all phần tử mà được thẻ <StoreContextProvider>
+    </StoreContextProvider> bao bọc cụ thể trong file main.css
+    mà file này là cấp cao nhất của toàn app điều đó có nghĩa
+    những file còn lại đều có thể sử dụng data từ file cha cung
+    cấp bằng cách dùng useContext. Thay vì bao thẻ còn bằng div
+    giống như (Header.jsx) thì mình bao bằng <StoreContext.Provider>
+    </StoreContext.Provider> để cung cấp data cho thẻ con*/
     return(
         <StoreContext.Provider value={contextValue}>
-            {/* props.children sẽ chứa all phần tử nằm trong 
-            thẻ mở <StoreContextProvider> và thẻ đóng
-            </StoreContextProvider> khi ta sử dụng component này*/}
             {props.children}
         </StoreContext.Provider>
     )

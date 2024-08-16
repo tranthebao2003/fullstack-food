@@ -40,3 +40,84 @@ hr{
     color: white;
     background-color: tomato;
 }
+
+.cart-bottom{
+    margin-top: 80px;
+    display: flex;
+    justify-content: space-between;
+    gap: max(12vw, 20px);
+    font-size: max(1.3vw, 16px);
+}
+
+.cart-total{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cart-total-details{
+    display: flex;
+    justify-content: space-between;
+    color: #555;
+}
+
+.cart-total hr{
+    margin: 10px 0;
+}
+
+.cart-total button{
+    color: white;
+    background-color: tomato;
+    width: max(15vw, 200px);
+    padding: 12px 0;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.cart-total button:hover{
+    background-color: rgb(252, 48, 12);
+}
+
+.cart-promocode{
+    flex: 1;
+}
+
+.cart-promocode p {
+    color: #555;
+}
+
+.cart-promocode-input{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #eaeaea;
+    border-radius: 4px;
+}
+
+.cart-promocode-input input{
+    background: transparent;
+    padding-left: 10px;
+}
+
+.cart-promocode-input button{
+    width: max(10vw, 150px);
+    padding: 12px 5px;
+    background-color: tomato;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.cart-promocode-input button:hover{
+    background-color: rgb(252, 48, 12);
+}
+
+@media (max-width: 750px) {
+    .cart-bottom{
+        flex-direction: column-reverse;
+    }
+}
