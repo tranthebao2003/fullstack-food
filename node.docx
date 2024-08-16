@@ -20,4 +20,8 @@ console.log(myObject); // { dynamicKey: 'This is a dynamic value' }
 Trong ví dụ này:
 
 keyName là biến có giá trị "dynamicKey".
-Khi sử dụng [keyName]: "This is a dynamic value", đối tượng myObject sẽ có một khóa tên là "dynamicKey" với giá trị "This is a dynamic value".
+Khi sử dụng [keyName]: "This is a dynamic value", đối tượng myObject sẽ có một khóa 
+tên là "dynamicKey" với giá trị "This is a dynamic value".
+
+Danh sách mã kí tự đặc biệt trong html
+https://xuanthulab.net/danh-sach-ma-html-cac-ky-tu-dac-biet.html
