@@ -1,13 +1,22 @@
 :root{
     --colorTextMain: #49557e;
-    --fontSizeTextMain: 18px
+    --fontSizeTextMain: 20px
 }
 
 .navbar{
-    padding: 20px 0px;
+    padding: 20px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    transition: 0.3s ease-in-out;
+}
+
+.navbar.sticky{
+    background-color: rgb(255, 231, 231);
 }
 
 .navbar .logo{
@@ -25,7 +34,13 @@
 .navbar-right{
     display: flex;
     align-items: center;
-    gap: 40px
+    gap: 40px;
+    transition: 0.4s;
+}
+
+.navbar-right img:hover{
+    opacity: 0.9;
+    transform: scale(1.05);
 }
 
 .navbar button{
@@ -41,25 +56,9 @@
     transition: 0.3s ease-in-out;
 }
 
-
 .navbar button:hover{
     color: #ffffff;
-}
-
-.navbar button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    transition: 0.3s ease-in-out;
-    z-index: -1;
-}
-
-.navbar button:hover::before{
-    width: 100%;
-    color: tomato;
+    background-color: tomato;
 }
 
 .navbar .active{
