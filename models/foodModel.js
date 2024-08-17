@@ -14,6 +14,6 @@ const foodSchema = new Schema({
 // foodModel sẽ được gán giá trị đó.
 // Nếu mô hình food chưa tồn tại thì nó sẽ tại mới bằng: model("food", foodSchema)
 // và gán nó cho foodModel
-const foodModel = models.food || model("food", foodSchema)
+const foodModel = models.food || model("Food", foodSchema)
 
 export default foodModel
