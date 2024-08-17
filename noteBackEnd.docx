@@ -1,0 +1,15 @@
+
+"bcrypt": mã hóa password trước khi đưa vào database
+"body-parser": ,
+"cors": cho phép frontend lấy dữ liệu từ backend khác nguồn,
+"dotenv": để tạo file .env những biến trong file này sẽ là biến môi trường,
+"express": cấu hình route, method http...,
+"jsonwebtoken": phân quyền,
+"mongoose": tương tác với mongoDB bằng những schema,
+"multer": ,
+"nodemon": refetch server when new something,
+"stripe": "^16.8.0",
+"validator": validate email and password
+
+"type": "module", trong file package.json để có thể
+viết theo kiểu import, export chứ ko cần require nữa
