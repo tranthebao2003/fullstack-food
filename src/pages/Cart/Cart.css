@@ -1,6 +1,7 @@
 .cart{
-    margin-top: 100px;
+   margin-bottom: 100px;
 }
+
 
 hr{
     height: 1px;
@@ -54,6 +55,11 @@ hr{
     flex: 1;
     flex-direction: column;
     gap: 20px;
+
+}
+
+.cart-total h2{
+    color: tomato;
 }
 
 .cart-total-details{

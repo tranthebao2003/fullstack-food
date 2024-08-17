@@ -25,3 +25,32 @@ tên là "dynamicKey" với giá trị "This is a dynamic value".
 
 Danh sách mã kí tự đặc biệt trong html
 https://xuanthulab.net/danh-sach-ma-html-cac-ky-tu-dac-biet.html
+
+
+
+3. Sự khác biệt chính
+
+Thẻ Link:
+Điều hướng tĩnh, thường xuất hiện trong JSX như một phần của giao diện người dùng.
+Không thực hiện bất kỳ logic nào trước khi điều hướng.
+Tương tự như thẻ <a>, nhưng không tải lại toàn bộ trang, giúp ứng dụng 
+React của bạn giữ trạng thái hiện tại.
+
+Hook useNavigate:
+Điều hướng có lập trình (programmatic navigation), dựa trên các sự kiện 
+hoặc logic trong ứng dụng.Thường được sử dụng bên trong các hàm xử lý 
+sự kiện hoặc sau khi xử lý logic.Không cần phải có liên kết trực 
+tiếp trong giao diện người dùng.
+
+4. Khi nào sử dụng cái nào:
+
+Sử dụng Link:
+Khi bạn chỉ cần một liên kết điều hướng đơn giản, như trong các menu, 
+danh sách điều hướng, hoặc liên kết trong nội dung.
+Khi bạn không cần điều hướng có điều kiện hoặc không cần thực 
+hiện bất kỳ logic nào trước khi điều hướng.
+
+Sử dụng useNavigate:
+Khi bạn cần điều hướng có điều kiện, sau khi thực hiện một hành động nào 
+đó, như đăng nhập, đăng ký, hoặc submit form.Khi điều hướng không 
+được xác định trước, hoặc bạn cần kiểm soát chính xác thời điểm điều hướng xảy ra.

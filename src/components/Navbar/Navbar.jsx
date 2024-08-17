@@ -25,6 +25,14 @@ const Navbar = ({setShowLogin}) => {
     };
   }, []);
 
+  const scrollHome = () => {
+    console.log(window.scrollTo({
+      top: 0,
+      behavior:'smooth'
+    }))
+    setMenu("home")
+  }
+
 
   return (
     <div className={`navbar ${sticky}`}>
@@ -32,13 +40,12 @@ const Navbar = ({setShowLogin}) => {
         <img src={assets.logo} alt="" className="logo" />
       </Link>
       <ul className="navbar-menu">
-        <Link
-          to="/"
-          onClick={() => setMenu("home")}
+        <a
+          onClick={() => scrollHome()}
           className={menu === "home" ? "active" : ""}
         >
           home
-        </Link>
+        </a>
         <a
           href="#explore-menu"
           onClick={() => setMenu("menu")}
