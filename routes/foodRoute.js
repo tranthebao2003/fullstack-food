@@ -1,5 +1,5 @@
 import express from 'express'
-import { addFood } from '../controllers/foodController.js'
+import { addFood, listFood} from '../controllers/foodController.js'
 import multer from 'multer'
 
 const foodRouter = express.Router()
@@ -35,5 +35,6 @@ const upload = multer({storage: storage})
 // Sau khi xử lý, tệp sẽ được lưu trữ theo cấu hình đã thiết lập (storage), 
 // và thông tin về tệp sẽ được thêm vào request object dưới dạng req.file
 foodRouter.post("/add", upload.single("image"), addFood)
+foodRouter.get("/list", listFood)
 
 export default foodRouter

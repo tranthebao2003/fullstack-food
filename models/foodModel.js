@@ -1,6 +1,6 @@
-import { model, Schema, models} from "mongoose";
+import mongoose from "mongoose"
 
-const foodSchema = new Schema({
+const foodSchema = new mongoose.Schema({
     name: {type: String, required: true},
     description: {type: String, required: true},
     price: {type: Number, required: true},
@@ -14,6 +14,6 @@ const foodSchema = new Schema({
 // foodModel sẽ được gán giá trị đó.
 // Nếu mô hình food chưa tồn tại thì nó sẽ tại mới bằng: model("food", foodSchema)
 // và gán nó cho foodModel
-const foodModel = models.food || model("Food", foodSchema)
+const foodModel = mongoose.models.Food || mongoose.model("Food", foodSchema)
 
 export default foodModel

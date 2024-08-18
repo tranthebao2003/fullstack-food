@@ -35,3 +35,8 @@ nhau như email, URL, số điện thoại, v.v., đảm bảo rằng dữ liệ
 
 "type": "module", trong file package.json để có thể
 viết theo kiểu import, export chứ ko cần require nữa
+
+Lỗi MulterError: Unexpected field xảy ra khi tên trường của 
+tệp tải lên không khớp với cấu hình mà bạn đã định nghĩa 
+trong multer. Để khắc phục, bạn cần kiểm tra tên trường và 
+cấu hình multer để đảm bảo sự nhất quán giữa phía server và client.

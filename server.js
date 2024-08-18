@@ -19,6 +19,7 @@ connectDB()
 // api endpoints
 // nếu endpoint là /api/food thì nó sẽ đến router: foodRouter
 app.use("/api/food", foodRouter)
+app.use("/images", express.static('uploads'))
 
 app.get("/", (req, res) => {
     res.send("API Working")
