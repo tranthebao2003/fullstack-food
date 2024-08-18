@@ -36,5 +36,22 @@ const listFood = async (req, res) => {
 }
 
 // remove food item
+const removeFood = async (req, res) => {
+    try{
+        // findById tìm theo trường _id automatic của mongoDB
+        const food = await foodModel.findById(req.body.id)
+        // fs.unlink trong Node.js được sử dụng để xóa tệp khỏi hệ thống tệp. 
+        // Nếu việc xóa thành công, nó sẽ không trả về lỗi; nếu không, bạn 
+        // sẽ nhận được thông tin lỗi thông qua callback. bắt buộc phải
+        // có callback rỗng nếu ko bị lỗi
+        fs.unlink(`uploads/${food.image}`, ()=>{})
 
-export{addFood, listFood}
+        await foodModel.findByIdAndDelete(req.body.id)
+        res.json({success: true, message: "Food Removed"})
+    }catch(err){
+        console.log(err)
+        res.status(500).json({success: false, error: err})
+    }
+}
+
+export{addFood, listFood, removeFood}
