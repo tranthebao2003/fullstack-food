@@ -29,6 +29,13 @@
     width: 20px;
 }
 
+/* ở đây vì ta dùng NavLink nêu khi ta
+click vào item nào thì nó sẽ tự động
+thêm class active vào */
+.sidebar-option.active{
+    background-color: rgba(255, 99, 71, 0.114);
+}
+
 @media (max-width: 900px){
     .sidebar{
         width: 10%;
