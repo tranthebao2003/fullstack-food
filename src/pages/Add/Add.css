@@ -1,9 +1,13 @@
 .add{
     width: 70%;
-    margin-left: max(5vw, 25px);
-    margin-top: 50px;
+    /* margin-left: ; */
+    margin: 30px 0 30px max(5vw, 25px);
     color: #6d6d6d;
-    font-size: 16px;
+    font-size: 20px;
+}
+
+input, textarea{
+    font-size: 18px;
 }
 
 input:focus{
@@ -42,10 +46,11 @@ textarea:focus{
 .add-category-price input {
     max-width: 120px;
     padding: 10px;
+    font-size: 18px;
 }
 
 .add-btn{
-    max-width: 120px;
+    max-width: 303px;
     border: none;
     padding: 10px;
     background: none;
@@ -56,6 +61,8 @@ textarea:focus{
     font-size: 16px;
     font-weight: 500;
     transition: 0.3s ease-in-out;
+    font-size: 20px;
+    font-weight: 600;
 }
 
 .add-btn:hover{
