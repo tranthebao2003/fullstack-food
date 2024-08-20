@@ -4,7 +4,7 @@ const userSchema = new mongoose.Schema({
     name:{type: String, required: true},
     email:{type: String, required: true, unique: true},
     password: {type: String, required: true},
-    carData: {type: Object, default:{}},
+    cartData: {type: Object, default:{}},
 
     // mặc đi nếu object trống thì nó xóa luôn
     // nhưng nếu mình để minimize là false thì 

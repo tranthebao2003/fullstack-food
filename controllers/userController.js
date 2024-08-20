@@ -2,11 +2,28 @@ import userModel from "../models/userModel.js";
 import jwt from 'jsonwebtoken'
 import bcrypt from "bcrypt"
 import validator from 'validator'
-import 'dotenv/config'
 
 // login user
 const loginUser = async (req, res) => {
-    
+    const {email, password} = req.body;
+    try {
+        const user = await userModel.findOne({email: email})
+
+        if(!user){
+            return res.json({success:false, message: "User doesn't exist"})
+        }
+
+        const isMatch = await bcrypt.compare(password, user.password)
+        if(!isMatch){
+            return res.json({success:false, message: "Invalid credentials"})
+        }
+
+        const token = createToken(user._id)
+        res.json({success: true, token:token})
+    } catch (err) {
+        console.error(err)
+        res.json({success: false, message: `${err}`})
+    }
 }
 
 const createToken = (id) => {
