@@ -6,7 +6,7 @@ const addFood = async (req, res) => {
     // do sử dụng middleware 
     // upload.single("image") ở foodRoute
     // nên giờ có thể truy cập file đó qua request
-    let image_filename = `${req.file.filename}`
+    let image_filename = `${req.file?.filename}`
     const food = new foodModel({
         name: req.body.name,
         description: req.body.description,
