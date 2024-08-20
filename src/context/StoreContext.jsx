@@ -1,5 +1,5 @@
+import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
-import { food_list } from "../assets/assets";
 
 // sử dụng useContext để truyền dữ liệu từ
 // cha sang con
@@ -8,6 +8,7 @@ export const StoreContext = createContext(null)
 const StoreContextProvider = (props) => {
     const url = 'http://localhost:4000'
     const [token, setToken] = useState('')
+    const [food_list, setFoodList] = useState([])
 
 // Quản lý tập trung: Thay vì sử dụng 30 useState để quản lý số lượng của 30 sản phẩm, 
 // bạn chỉ cần một useState duy nhất (cartItems). Điều này giúp mã nguồn gọn gàng và dễ 
@@ -69,6 +70,22 @@ const StoreContextProvider = (props) => {
         }
         return totalAmount
     }
+
+    const fetchFoodList = async () => {
+        const response = await axios.get(`${url}/api/food/list`)
+        setFoodList(response.data.data)
+    }
+
+    useEffect(() => {
+        async function loadData() {
+            await fetchFoodList()
+            if(localStorage.getItem('token')){
+                setToken(localStorage.getItem("token"))
+            }
+        }
+
+        loadData()
+    },[])
 
     const contextValue = {
       food_list,

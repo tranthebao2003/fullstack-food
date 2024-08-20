@@ -114,14 +114,35 @@
 .navbar-profile{
     position: relative;
     transition: 0.3s ease-in-out;
+    cursor: pointer;
 }
+
 
 .navbar-profile-dropdown{
     position: absolute;
     display: none;
-    right: 0;
+    right: -10px;
+    top: 50px;
     z-index: 1;
+    list-style-type: none;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    cursor: pointer;
 }
+
+.navbar-profile-dropdown::before{
+    top: -38px;
+    right: 0;
+    position: absolute;
+    z-index: 2;
+    content: "";
+    border-bottom: 20px solid #fff2ef;
+    border-right: 20px solid transparent;
+    border-left: 20px solid transparent;
+    border-top: 20px solid transparent;
+}
+
 
 .navbar-profile:hover .navbar-profile-dropdown{
     display: flex;
@@ -133,12 +154,6 @@
     outline: 2px solid white; 
 }
 
-.navbar-profile-dropdown{
-    list-style-type: none;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-}
 
 .navbar-profile-dropdown li{
     display: flex;

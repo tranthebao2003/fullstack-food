@@ -12,12 +12,12 @@ const FoodItem = (props) => {
   // ta chỉ tạo 1 useState làm global app
   // rồi dùng nó để sử dụng cho foodItem này
   // thông qua _id của các item
-  const { cartItems, addToCart, removeFromCart } = useContext(StoreContext);
+  const { cartItems, addToCart, removeFromCart, url} = useContext(StoreContext);
 
   return (
     <div className="food-item">
       <div className="food-item-img-container">
-        <img src={image} alt="" className="food-item-image" />
+        <img src={`${url}/images/${image}`} alt="" className="food-item-image" />
         {!cartItems[_id] ? (
           <img
             className="add"

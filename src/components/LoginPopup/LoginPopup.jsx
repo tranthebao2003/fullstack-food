@@ -3,7 +3,6 @@ import './LoginPopup.css'
 import { assets } from '../../assets/assets';
 import axios from 'axios'
 import { StoreContext } from '../../context/StoreContext';
-import { toast } from 'react-toastify';
 
 const LoginPopup = ({setShowLogin}) => {
 
@@ -35,7 +34,6 @@ const LoginPopup = ({setShowLogin}) => {
        newUrl = `${url}/api/user/register`
     }
 
-    console.log('newurl:', newUrl)
     const response = await axios.post(newUrl, data)
 
     if(response.data.success){
@@ -43,7 +41,7 @@ const LoginPopup = ({setShowLogin}) => {
       localStorage.setItem("token", response.data.token)
       setShowLogin(false)
     } else{
-      toast(response.data.message)
+      alert(response.data.message)
     }
   }
 
