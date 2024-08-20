@@ -7,7 +7,7 @@ import { StoreContext } from '../../context/StoreContext'
 const Navbar = ({setShowLogin}) => {
   const [menu, setMenu] = useState("home")
   const [sticky, setSticky] = useState('')
-  const{getTotalCartAmount} = useContext(StoreContext)
+  const{getTotalCartAmount, token, setToken} = useContext(StoreContext)
 
   const handleScroll = () => {
     if(window.scrollY > 70){
@@ -76,7 +76,17 @@ const Navbar = ({setShowLogin}) => {
           </Link>
           <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
         </div>
-        <button onClick={() => setShowLogin(true)}>sign in</button>
+        {!token ? (
+          <button onClick={() => setShowLogin(true)}>sign in</button>
+        ) : (
+          <div className='navbar-profile'>
+            <img src={assets.profile_icon} alt="" />
+            <ul className="navbar-profile-dropdown">
+              <li><img src={assets.bag_icon} alt="" />Orders</li>
+              <li><img src={assets.logout_icon} alt="" />Logout</li>
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -6,6 +6,8 @@ import { food_list } from "../assets/assets";
 export const StoreContext = createContext(null)
 
 const StoreContextProvider = (props) => {
+    const url = 'http://localhost:4000'
+    const [token, setToken] = useState('')
 
 // Quản lý tập trung: Thay vì sử dụng 30 useState để quản lý số lượng của 30 sản phẩm, 
 // bạn chỉ cần một useState duy nhất (cartItems). Điều này giúp mã nguồn gọn gàng và dễ 
@@ -74,7 +76,10 @@ const StoreContextProvider = (props) => {
       setCartItems,
       addToCart,
       removeFromCart,
-      getTotalCartAmount
+      getTotalCartAmount,
+      url,
+      token,
+      setToken
     };
 
     // value dùng để chứa dữ liệu, khi muốn dùng 
