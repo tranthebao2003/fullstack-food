@@ -25,7 +25,7 @@ const StoreContextProvider = (props) => {
 // dấu [] cực kì quan trọng, vì nếu ko có nó thì sẽ tạo ra static key nghĩa
 // là object sẽ thêm 1 key cứng là itemId
     const [cartItems, setCartItems] = useState({})
-    const addToCart = (itemId) => {
+    const addToCart = async (itemId) => {
         // !cartItems[itemId]: check xem key (giá trị itemId truyền vào)
         // có tồn tại trong object không, cái value của itemId luôn
         // phải là string
@@ -40,14 +40,27 @@ const StoreContextProvider = (props) => {
             // link vd simple: https://playcode.io/1961695
             setCartItems((prev) => ({...prev, [itemId]:prev[itemId]+1}))
         }
+        if(token) {
+            // bắt buộc phải có dấu {} bao token nha
+            await axios.post(`${url}/api/cart/add`, {itemId: itemId},{headers:{token}})
+        }
     }
 
-    const removeFromCart = (itemId) => {
+    const removeFromCart = async(itemId) => {
         // ở đây mình ko cần bắt if giống như trên
         // bởi vì để hiện giao diện nút xóa thì
         // bắt buộc trước đó phải thêm ít nhất 1 item rồi
         // mà như thế là đã có key rồi
         setCartItems((prev) => ({...prev, [itemId]: prev[itemId] - 1}))
+        if(token){
+            await axios.post(`${url}/api/cart/remove`, {itemId: itemId}, {headers: {token}})
+        }
+    }
+
+    const loadCartData = async (token) => {
+        console.log('loadCartData', `${url}/api/cart/get`)
+        const respone = await axios.get(`${url}/api/cart/get`, {headers: {token}})
+        setCartItems(respone.data.cartData)
     }
 
     // test carItems
@@ -81,6 +94,7 @@ const StoreContextProvider = (props) => {
             await fetchFoodList()
             if(localStorage.getItem('token')){
                 setToken(localStorage.getItem("token"))
+                await loadCartData(localStorage.getItem("token"))
             }
         }
 
