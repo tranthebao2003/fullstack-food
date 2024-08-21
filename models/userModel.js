@@ -11,6 +11,6 @@ const userSchema = new mongoose.Schema({
     // nó vẫn sẽ tạo object đó (vc này phục vụ cho carData)
 }, {minimize: false})
 
-const userModel = mongoose.models.users || mongoose.model("User", userSchema)
+const userModel = mongoose.models.User || mongoose.model("User", userSchema)
 
 export default userModel
