@@ -1,10 +1,10 @@
 :root{
     --colorTextMain: #49557e;
-    --fontSizeTextMain: 18px
+    --fontSizeTextMain: 22px
 }
 
 .navbar{
-    padding: 10px 22px;
+    padding: 30px max(10vw, 50px);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -16,6 +16,7 @@
 }
 
 .navbar.sticky{
+    padding: 14px max(2vw, 30px);
     background-color: rgb(255, 231, 231);
 }
 
@@ -175,7 +176,7 @@
     }
     .navbar-menu{
         gap: 18px;
-        font-size: 17px;
+        font-size: 22px;
     }
     .navbar-right{
         gap: 30px;
@@ -194,10 +195,10 @@
     }
     .navbar-menu{
         gap: 15px;
-        font-size: 16px;
+        font-size: 20px;
     }
     .navbar-right{
-        gap: 20px;
+        gap: 18px;
     }
     .navbar-right img {
         width: 20px;

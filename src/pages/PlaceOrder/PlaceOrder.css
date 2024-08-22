@@ -5,6 +5,7 @@
     align-items: start;
     justify-content: space-between;
     gap: 50px;
+    font-size: 18px;
 }
 
 .place-order-left{
@@ -33,6 +34,7 @@
     padding: 10px;
     border: 1.2px solid tomato;
     border-radius: 4px;
+    font-size: 18px;
 }
 
 .place-order-left input:focus{
@@ -46,7 +48,8 @@
 
 .place-order-right{
     width: 100%;
-    max-width: (40%, 500px);
+    max-width: (30%, 500px);
+    padding-left: 100px;
 }
 
 .place-order .cart-total {

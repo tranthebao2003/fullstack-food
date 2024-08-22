@@ -33,18 +33,18 @@ const Navbar = ({setShowLogin}) => {
   }, []);
 
   const scrollHome = () => {
-    console.log(window.scrollTo({
+    window.scrollTo({
       top: 0,
       behavior:'smooth'
-    }))
+    })
     setMenu("home")
   }
 
   const btnLogin = () => {
-    console.log(window.scrollTo({
+    window.scrollTo({
       top: 0,
       behavior:'smooth'
-    }))
+    })
     setShowLogin(true)
   }
 
@@ -97,7 +97,7 @@ const Navbar = ({setShowLogin}) => {
           <div className='navbar-profile'>
             <img src={assets.profile_icon} alt="" />
             <ul className="navbar-profile-dropdown">
-              <li><img src={assets.bag_icon} alt="" />Orders</li>
+              <li onClick={() => navigate('/myorders')}><img src={assets.bag_icon} alt="" />Orders</li>
               <li onClick={logout}><img src={assets.logout_icon} alt="" />Logout</li>
             </ul>
           </div>
