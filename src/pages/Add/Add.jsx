@@ -45,7 +45,6 @@ const Add = () => {
         price: "",
         category: "Salad",
       })
-
       setImage(false)
       toast.success(response.data.message)
     } else{
@@ -98,7 +97,7 @@ const Add = () => {
             <input onChange={onChangeHandler} value={data.price} type="Number" name="price" placeholder="$20" />
           </div>
         </div>
-        <button type="submid" className="add-btn">Add</button>
+        <button type="submit" className="add-btn">Add</button>
       </form>
     </div>
   );

@@ -34,7 +34,7 @@ textarea:focus{
 }
 
 .add-product-name input, .add-product-description textarea{
-    padding: 10px;
+    padding: 8px;
 }
 
 .add-category-price{
@@ -45,7 +45,7 @@ textarea:focus{
 .add-category-price select,
 .add-category-price input {
     max-width: 120px;
-    padding: 10px;
+    padding: 8px;
     font-size: 18px;
 }
 
