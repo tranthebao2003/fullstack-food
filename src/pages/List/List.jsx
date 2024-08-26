@@ -19,7 +19,6 @@ const List = () => {
 
   const removeFood = async (foodId) => {
     const respone = await axios.post(`${url}/api/food/remove`, {id: foodId})
-    await fetchList()
     if(respone.data.success){
       toast(respone.data.message)
     } else{
@@ -29,7 +28,7 @@ const List = () => {
 
   useEffect(() => {
     fetchList()
-  }, [])
+  }, [list])
 
   return (
     <div className="list add flex-cold">
