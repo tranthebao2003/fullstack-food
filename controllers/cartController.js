@@ -1,5 +1,8 @@
 import userModel from "../models/userModel.js"
 
+// sở dĩ mình có userId là vì trước đó mình
+// có dùng 1 middleware là authMiddleware
+
 // add items to user cart
 const addToCart = async (req, res) => {
     try {
