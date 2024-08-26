@@ -36,6 +36,9 @@ const placeOrder = async (req, res) => {
         // Nếu item.price là 50,000 VND, và bạn muốn giá này 
         // là giá mỗi đơn vị sản phẩm, thì unit_amount chỉ cần đặt là item.price.
 
+        // mỗi item là 1 object sản phẩm mà user đã đặt, bây giờ ta duyệt qua
+        // và nó sẽ trả về 1 mảng các sản phẩm với mỗi sp là 1 object có 2 key
+        // price_data và quantity
         const line_items = req.body.items.map((item, index) => ({
             price_data:{
                 currency: 'vnd',
@@ -53,7 +56,7 @@ const placeOrder = async (req, res) => {
                 product_data:{
                     name: "delivery charges"
                 },
-                unit_amount: 2
+                unit_amount: 50000
             },
             quantity: 1
         })
