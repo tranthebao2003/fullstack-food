@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 // sử dụng useContext để truyền dữ liệu từ
 // cha sang con
@@ -58,7 +58,7 @@ const StoreContextProvider = (props) => {
     }
 
     const loadCartData = async (token) => {
-        console.log('loadCartData', `${url}/api/cart/get`)
+        // console.log('loadCartData', `${url}/api/cart/get`)
         const respone = await axios.get(`${url}/api/cart/get`, {headers: {token}})
         setCartItems(respone.data.cartData)
     }
@@ -71,9 +71,9 @@ const StoreContextProvider = (props) => {
     const getTotalCartAmount = () => {
         let totalAmount = 0
         // Vòng lặp for...in được sử dụng để lặp 
-        // qua các thuộc tính của một đối 
+        // qua các key của một đối 
         // tượng trong JavaScript. item
-        // là những thuộc tính trong object cartItems
+        // là những key trong object cartItems
         for(const item in cartItems){
             if (cartItems[item] > 0) {
               // trả về object thỏa đk
@@ -101,16 +101,25 @@ const StoreContextProvider = (props) => {
         loadData()
     },[])
 
+    // object thông thường chứa 
+    // các cặp key-value. Tuy nhiên, trong 
+    // JavaScript, có một cú pháp đặc biệt
+    // gọi là "Shorthand Property Names" cho 
+    // phép bạn viết gọn khi key và value có cùng tên.
+    // nghĩa là nếu key, value cùng tên thì mình
+    // cần viết 1 cái thôi là được
     const contextValue = {
       food_list,
       cartItems,
       setCartItems,
+      loadCartData,
       addToCart,
       removeFromCart,
       getTotalCartAmount,
       url,
       token,
-      setToken
+      setToken,
+      
     };
 
     // value dùng để chứa dữ liệu, khi muốn dùng 
@@ -119,7 +128,7 @@ const StoreContextProvider = (props) => {
 
     /* tóm tắt: thay vì thẻ con phải nằm trực tiếp
     trong thẻ cha rồi thẻ cha trả về, khi đó cha
-    có thể truyền props cho con 1 cách dễ dàng (Header.jsx)
+    có thể truyền props cho con 1 cách dễ dàng (Home.jsx)
     thì ở đây thay vì làm thế thì mình dùng {props.children}
     đại diện cho all phần tử mà được thẻ <StoreContextProvider>
     </StoreContextProvider> bao bọc cụ thể trong file main.css

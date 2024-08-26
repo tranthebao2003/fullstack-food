@@ -2,7 +2,6 @@
    margin-bottom: 100px;
 }
 
-
 hr{
     height: 1px;
     background-color: rgb(210, 210, 210);
@@ -122,8 +121,26 @@ hr{
     background-color: rgb(252, 48, 12);
 }
 
+@media (max-width: 900px) {
+    
+    .cart-items-title{
+        display: grid;
+        grid-template-columns: 0.8fr 1.5fr 1fr 1fr 1fr 0.5fr;
+        gap: 10px;
+    }
+}
+
 @media (max-width: 750px) {
+    
     .cart-bottom{
         flex-direction: column-reverse;
+    }
+}
+
+@media (max-width: 560px) {
+    .cart-items-title{
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr 1fr 1fr 0.5fr;
+        gap: 20px;
     }
 }

@@ -17,7 +17,7 @@
     cells, in the block direction */
     align-items: start;
     max-width: 50%;
-    bottom: 10%;
+    bottom: 20%;
     left: 6vw;
     gap: 1.5vw;
     /* fadeIn này là keyframe trong index.css
@@ -26,7 +26,7 @@
 }
 
 .header-contents h2{
-    font-weight: 500;
+    font-weight: 600;
     color: white;
     /* - max chọn giá trị lớn hớn trong 2 giá trị 
        - Thuộc tính font-size: max(4.5vw, 22px); 
@@ -42,16 +42,6 @@
     font-size: 1vw;
 }
 
-.header-contents button{
-    border: none;
-    color: #747474;
-    font-weight: 500;
-    padding: 1vw 2.3vw;
-    background-color: white;
-    font-size: max(1vw, 13px);
-    border-radius: 50px;
-}
-
 @media (max-width: 1050px) {
     .header-contents{
         max-width: 45%;
@@ -60,9 +50,6 @@
 @media (max-width: 750px) {
     .header-contents{
         max-width: 65%;
-    }
-    .header-contents p{
-        display: none;
     }
     .header-contents button{
         padding: 2vw 4vw;

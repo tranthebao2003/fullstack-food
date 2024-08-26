@@ -17,7 +17,6 @@
     (flex container) */
     margin: 0 auto;
     width: max(26vw, 360px);
-    height: 450px;
     color: #808080;
     background-color: white;
     display: flex;

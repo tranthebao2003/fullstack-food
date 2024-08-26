@@ -34,8 +34,11 @@
     transition: 0.2s;
 }
 
+.footer-content-right li{
+    cursor:default
+}
+
 .footer-content-left li:hover,
-.footer-content-right li:hover,
 .footer-content-center li:hover{
     color: tomato;
 }

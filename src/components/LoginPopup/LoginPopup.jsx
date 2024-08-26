@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './LoginPopup.css'
 import { assets } from '../../assets/assets';
 import axios from 'axios'
@@ -6,7 +6,7 @@ import { StoreContext } from '../../context/StoreContext';
 
 const LoginPopup = ({setShowLogin}) => {
 
-  const {setToken, url} = useContext(StoreContext)
+  const {setToken, url, loadCartData} = useContext(StoreContext)
   const [currState, setCurrState] = useState("Login")
   const [data, setData] = useState({
     name: "",
@@ -40,6 +40,7 @@ const LoginPopup = ({setShowLogin}) => {
       setToken(response.data.token)
       localStorage.setItem("token", response.data.token)
       setShowLogin(false)
+      loadCartData(response.data.token)
     } else{
       alert(response.data.message)
     }

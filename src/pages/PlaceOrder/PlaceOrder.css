@@ -16,7 +16,7 @@
     tối đa được xác định bởi max-width: 
     max(30%, 500px). Điều này đảm bảo tính
     linh hoạt trong việc hiển thị phần tử 
-    trên các kích thướcmàn hình khác nhau. */
+    trên các kích thước màn hình khác nhau. */
     width: 100%;
     max-width: max(30%, 500px);
 }
