@@ -1,8 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {useEffect, useState } from "react";
 import "./ResetPassword.css";
 import { assets } from "../../assets/assets";
 import axiosInstance from "../../utility/axiosInstance";
-import { StoreContext } from "../../context/StoreContext";
 import { Rings } from "react-loader-spinner";
 import { useNavigate, useParams } from "react-router-dom";
 
