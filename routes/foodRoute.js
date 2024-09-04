@@ -1,6 +1,7 @@
 import express from 'express'
 import { addFood, listFood, removeFood} from '../controllers/foodController.js'
 import multer from 'multer'
+import authMiddleware from '../middleware/auth.js'
 
 const foodRouter = express.Router()
 
@@ -34,8 +35,8 @@ const upload = multer({storage: storage})
 // Multer sẽ tìm trường này trong request và xử lý tệp tải lên liên quan.
 // Sau khi xử lý, tệp sẽ được lưu trữ theo cấu hình đã thiết lập (storage), 
 // và thông tin về tệp sẽ được thêm vào request object dưới dạng req.file
-foodRouter.post("/add", upload.single("image"), addFood)
-foodRouter.get("/list", listFood)
-foodRouter.post("/remove", removeFood)
+foodRouter.post("/add", authMiddleware, upload.single("image"), addFood)
+foodRouter.get("/list", authMiddleware, listFood)
+foodRouter.post("/remove", authMiddleware, removeFood)
 
 export default foodRouter

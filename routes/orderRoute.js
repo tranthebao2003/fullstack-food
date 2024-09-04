@@ -6,8 +6,9 @@ const orderRouter = express.Router()
 
 orderRouter.post('/place', authMiddleware, placeOrder)
 orderRouter.post('/verify', vetifyOrder)
-orderRouter.post('/userorders', authMiddleware, userOrders)
-orderRouter.get('/list', listOrders)
-orderRouter.post('/status', updateStatus)
+orderRouter.post('/userorders/:category', authMiddleware, userOrders)
+orderRouter.get('/list/:category', authMiddleware, listOrders)
+// cho admin chưa xử lí
+orderRouter.post('/status', authMiddleware, updateStatus)
 
 export default orderRouter

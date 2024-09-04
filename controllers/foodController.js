@@ -1,8 +1,16 @@
 import foodModel from "../models/foodModel.js";
+import adminModel from "../models/adminModel.js";
 import fs from 'node:fs'
 
 // add food item
 const addFood = async (req, res) => {
+
+    const admin = adminModel.findOne({email: req.body.email})
+
+    if(!admin){
+        return res.status(403).json({success: false, message: "Không được phân quyền"})
+    }
+
     // do sử dụng middleware 
     // upload.single("image") ở foodRoute
     // nên giờ có thể truy cập file đó qua request
@@ -37,6 +45,10 @@ const listFood = async (req, res) => {
 
 // remove food item
 const removeFood = async (req, res) => {
+    const admin = adminModel.findOne({email: req.body.email})
+    if(!admin){
+        return res.status(403).json({success: false, message: "Không được phân quyền"})
+    }
     try{
         // findById tìm theo trường _id automatic của mongoDB
         const food = await foodModel.findById(req.body.id)
@@ -44,7 +56,7 @@ const removeFood = async (req, res) => {
         // Nếu việc xóa thành công, nó sẽ không trả về lỗi; nếu không, bạn 
         // sẽ nhận được thông tin lỗi thông qua callback. bắt buộc phải
         // có callback rỗng nếu ko bị lỗi
-        fs.unlink(`uploads/${food.image}`, ()=>{})
+        fs.unlink(`uploads/${food?.image}`, ()=>{})
 
         await foodModel.findByIdAndDelete(req.body.id)
         res.json({success: true, message: "Food Removed"})

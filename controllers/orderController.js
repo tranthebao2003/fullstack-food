@@ -9,10 +9,11 @@ const placeOrder = async (req, res) => {
 
     // url fronend
     const frontend_url = 'https://fullstack-food-frontend.onrender.com/'
+    // const frontend_url = 'http://localhost:5173'
 
     try {
         const newOrder = new orderModel({
-            userId: req.body.userId,
+            userId: req.body.email,
             items: req.body.items,
             amount: req.body.amount,
             address: req.body.address
@@ -21,7 +22,7 @@ const placeOrder = async (req, res) => {
         await newOrder.save()
         // sau khi đặt hàng sau thì mình update lại
         // cartdata rỗng
-        await userModel.findByIdAndUpdate(req.body.userId, {cartData: {}})
+        await userModel.findOneAndUpdate({email: req.body.email}, {cartData: {}})
 
         // currency được đổi thành 'vnd', đây là mã ISO cho Đồng Việt Nam. 
         // Stripe sẽ sử dụng đơn vị tiền tệ này cho giao dịch.
@@ -61,6 +62,7 @@ const placeOrder = async (req, res) => {
             quantity: 1
         })
 
+        // chính là điều hướng frontend sang trang verify và truyền params
         const session = await stripe.checkout.sessions.create({
             line_items: line_items,
             mode: 'payment',
@@ -68,6 +70,7 @@ const placeOrder = async (req, res) => {
             cancel_url:`${frontend_url}/verify?success=false&orderId=${newOrder._id}`,
         })
 
+        // session.url: trả lại url thành công hay thất bại
         res.json({success: true, session_url:session.url})
     } catch (error) {
         console.error(error)
@@ -94,7 +97,12 @@ const vetifyOrder = async (req, res) => {
 // user orders for frontend
 const userOrders = async(req, res) => {
     try {
-        const orders = await orderModel.find({userId: req.body.userId})
+        let orders
+        if(!req.params.category || req.params.category === 'All'){
+            orders = await orderModel.find({userId: req.body.email})
+        } else{
+            orders = await orderModel.find({userId: req.body.email, status: req.params.category})
+        }
         res.json({success: true, data: orders})
     } catch (error) {
         console.log(error)
@@ -105,7 +113,14 @@ const userOrders = async(req, res) => {
 // Listing orders for admin panel
 const listOrders = async(req, res) => {
     try {
-        const orders = await orderModel.find()
+        // phân loại: all, Delivery, Out for delivery, Food Processing
+        let orders
+        if(!req.params.category || req.params.category === 'All') {
+            orders = await orderModel.find()
+        } else{
+            orders = await orderModel.find({status: req.params.category})
+        }
+       
         res.json({success: true, data: orders})
     } catch (error) {
         console.log(error)

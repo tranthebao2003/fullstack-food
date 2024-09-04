@@ -5,8 +5,9 @@ const userSchema = new mongoose.Schema({
     email:{type: String, required: true, unique: true},
     password: {type: String, required: true},
     cartData: {type: Object, default:{}},
+    refreshToken: {type: String, default: ''},
 
-    // mặc đi nếu object trống thì nó xóa luôn
+    // mặc định nếu object trống thì nó xóa luôn
     // nhưng nếu mình để minimize là false thì 
     // nó vẫn sẽ tạo object đó (vc này phục vụ cho carData)
 }, {minimize: false})
