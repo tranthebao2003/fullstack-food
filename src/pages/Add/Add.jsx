@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import "./Add.css";
 import { assets } from "../../assets/assets";
-import axios from "axios";
-import { url } from "../../../utilities/Url";
+import axiosInstanceAdmin from "../../../utilities/axiosInstanceAdmin";
 import { toast } from "react-toastify";
-import { useEffect } from "react";
 
 const Add = () => {
   const [image, setImage] = useState(false);
@@ -35,7 +33,7 @@ const Add = () => {
     formData.append("category", data.category);
     formData.append("image", image);
     
-    const response = await axios.post(`${url}/api/food/add`, formData);
+    const response = await axiosInstanceAdmin.post(`/api/food/add`, formData);
     if (response.data.success) {
       setData({
         name: "",
@@ -112,7 +110,7 @@ const Add = () => {
               value={data.price}
               type="Number"
               name="price"
-              placeholder="$20"
+              placeholder="20000 Đ"
             />
           </div>
         </div>

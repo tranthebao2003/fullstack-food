@@ -10,6 +10,21 @@
     color: #505050;
 }
 
+.header-category{
+    display: flex;
+    justify-content: space-between;
+}
+
+.category{
+    min-height: 30px;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 5px;
+    color: tomato;
+    border-color: tomato;
+    font-weight: 500;
+}
+
 .order-item-food, .order-item-name{
     font-weight: 600;
 }

@@ -1,18 +1,18 @@
 import React from 'react'
 import './Orders.css'
 import { useState } from 'react'
-import {url} from '../../../utilities/Url.js'
 import {toast} from 'react-toastify'
 import { useEffect } from 'react'
-import axios from 'axios'
+import axiosInstanceAdmin from '../../../utilities/axiosInstanceAdmin.js'
 import { assets } from '../../assets/assets.js'
 
 const Orders = () => {
 
   const [orders, setOrders] = useState([])
+  const [category, setCategory] = useState('All')
 
   const fetchAllOrders = async () => {
-    const response = await axios.get(`${url}/api/order/list`)
+    const response = await axiosInstanceAdmin.get(`/api/order/list/${category}`)
     if(response.data.success){
       setOrders(response.data.data)
     } else{
@@ -21,8 +21,8 @@ const Orders = () => {
   }
 
   const statusHandler = async (event, orderId) => {
-    console.log(event)
-    const response = await axios.post(`${url}/api/order/status`, {
+    // console.log(event)
+    const response = await axiosInstanceAdmin.post(`/api/order/status`, {
       orderId: orderId,
       status: event.target.value,
     })
@@ -36,11 +36,20 @@ const Orders = () => {
 
   useEffect(() => {
     fetchAllOrders()
-  }, [])
+  }, [category])
 
   return (
     <div className="order add">
-      <h3>Order Page</h3>
+      <div className="header-category">
+        <h3>Order Page</h3>
+        <select onChange={(e) => setCategory(e.target.value)} className="category">
+          <option value="All">All</option>
+          <option value="Delivery">Delivery</option>
+          <option value="Food Processing">Food Processing</option>
+          <option value="Out for delivery">Out for delivery</option>
+        </select>
+      </div>
+
       <div className="order-list">
         {orders.map((order, index) => (
           <div key={index} className="order-item">
@@ -60,9 +69,7 @@ const Orders = () => {
               </p>
 
               <div className="order-item-address">
-                <p>
-                  {order.address.street + ","}
-                </p>
+                <p>{order.address.street + ","}</p>
                 <p>
                   {order.address.city +
                     ", " +
@@ -73,13 +80,14 @@ const Orders = () => {
                     order.address.zipcode}
                 </p>
               </div>
-              <p className="order-item-phone">
-                {order.address.phone}
-              </p>
+              <p className="order-item-phone">{order.address.phone}</p>
             </div>
             <p>Items: {order.items.length}</p>
             <p>{order.amount} Đ</p>
-            <select onChange={(event) => statusHandler(event, order._id)} value={order.status}>
+            <select
+              onChange={(event) => statusHandler(event, order._id)}
+              value={order.status}
+            >
               <option value="Food Processing">Food Processing</option>
               <option value="Out for delivery">Out for delivery</option>
               <option value="Delivery">Delivery</option>

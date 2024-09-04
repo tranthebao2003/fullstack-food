@@ -16,6 +16,10 @@
     font-weight: 600;
 }
 
+.list-table{
+    height: 600px;
+}
+
 .list-table-format.title{
     background-color: #f9f9f9;
 }
@@ -27,7 +31,7 @@
 .cursor{
     color: white;
     background-color: tomato;
-    width: max(3.5vw, 60px);
+    width: max(3.5vw, 40px);
     padding: 6px 0;
     border-radius: 4px;
     cursor: pointer;
@@ -41,14 +45,54 @@
     background-color: rgb(252, 48, 12);
 }
 
-@media (max-width: 600px) {
+.page {
+    display: flex;
+    width: 100%;
+    font-size: 22px;
+    justify-content: space-between;
+    list-style: none;
+    background-color: rgb(252, 243, 242);
+    padding: 10px 0px;
+    color: tomato;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: 0.5s ease-in-out;
+}
+
+.page a{
+    cursor: pointer;
+    padding: 10px 30px;
+    transition: 0.2s ease-in-out;
+}
+
+.page a:hover{
+   background-color: rgb(253, 232, 204);
+}
+
+@media (max-width: 900px) {
     .list-table-format{
-        grid-template-columns: 1fr 3fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 3fr 1fr 1.5fr 0.5fr;
     }
     .list-table-format.title{
         display: none;
     }
     .list > p {
         margin-bottom: 26px;
+    }
+    .page {
+        font-size: 20px;
+    }
+    .page a{
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 650px) {
+    .add{
+        width: 100%;
+        margin-right: 20px;
+    }
+    .list-table-format{
+        grid-template-columns: 1fr 3fr 1fr 1.8fr 0.2fr;
     }
 }

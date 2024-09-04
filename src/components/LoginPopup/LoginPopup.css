@@ -1,0 +1,115 @@
+.login-popup{
+    position: absolute;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    background-color: #00000090;
+    display: flex;
+}
+
+.loadingLogin{
+    position: relative;
+    top: 18%;
+    left: 43vw;
+}
+
+.login-popup-container{
+     /* place-self là một thuộc tính CSS 
+    dùng để căn chỉnh một phần tử con trong 
+    cả trục dọc (vertical) và trục ngang 
+    (horizontal) bên trong một vùng lưới 
+    (grid container) hoặc một vùng khung dẻo 
+    (flex container) */
+    place-self: center;
+   
+    margin: 0 auto;
+    width: max(26vw, 360px);
+    color: #808080;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    padding: 25px 30px;
+    border-radius: 8px;
+    animation: fadeIn 0.5s;
+    font-size: 18px;
+}
+
+.login-popup-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: tomato;
+}
+
+.login-popup-title img {
+    width: 16px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.login-popup-title img:hover{
+    transform: scale(1.2);
+}
+
+.login-popup-inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+}
+
+.login-popup-inputs input{
+    border: 1px solid tomato;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.login-popup-container button{
+    padding: 10px;
+    border-radius: 4px;
+    color: white;
+    background-color: tomato;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:  0.35s ease-in-out;
+}
+
+.login-popup-container button:hover{
+    background-color: rgb(249, 63, 30);
+}
+
+.login-popup-condition{
+    display: flex;
+    align-items: start;
+    gap: 8px;
+    margin-top: -10px;
+}
+
+.login-popup-condition input{
+    margin-top: 4px;
+}
+
+.login-popup p span{
+    color: tomato;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.login-popup p span:hover{
+    color: rgb(255, 38, 0);
+}
+
+.show-hide-eye{
+    position: absolute;
+    top: 70%;
+    right: 3%;
+    width: 25px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.show-hide-eye:hover{
+    transform: scale(1.1);
+}
