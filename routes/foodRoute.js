@@ -36,7 +36,7 @@ const upload = multer({storage: storage})
 // Sau khi xử lý, tệp sẽ được lưu trữ theo cấu hình đã thiết lập (storage), 
 // và thông tin về tệp sẽ được thêm vào request object dưới dạng req.file
 foodRouter.post("/add", authMiddleware, upload.single("image"), addFood)
-foodRouter.get("/list", authMiddleware, listFood)
+foodRouter.get("/list", listFood)
 foodRouter.post("/remove", authMiddleware, removeFood)
 
 export default foodRouter
