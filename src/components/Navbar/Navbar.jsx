@@ -4,7 +4,7 @@ import {assets} from '../../assets/assets'
 import { Link, useNavigate } from 'react-router-dom'
 import { StoreContext } from '../../context/StoreContext'
 
-const Navbar = ({setShowLogin}) => {
+const Navbar = ({setShowLogin, setShowSignup}) => {
   const [menu, setMenu] = useState("home")
   const [sticky, setSticky] = useState('')
   const{getTotalCartAmount, token, setToken} = useContext(StoreContext)
@@ -48,10 +48,23 @@ const Navbar = ({setShowLogin}) => {
     setShowLogin(true)
   }
 
+  const btnSigup = () => {
+    window.scrollTo({
+      top: 0,
+      behavior:'smooth'
+    })
+    setShowSignup(true)
+  }
+
   return (
     <div className={`navbar ${sticky}`}>
       <Link to="/">
-        <img src={assets.logo} alt="" className="logo" onClick={() => scrollHome()}/>
+        <img
+          src={assets.logo}
+          alt=""
+          className="logo"
+          onClick={() => scrollHome()}
+        />
       </Link>
       <ul className="navbar-menu">
         <a
@@ -90,13 +103,22 @@ const Navbar = ({setShowLogin}) => {
           <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
         </div>
         {!token ? (
-          <button onClick={() => btnLogin()}>sign in</button>
+          <div className='sign-in-up'>
+            <button className='sign-in' onClick={() => btnLogin()}>sign in</button>
+            <button className='sign-up' onClick={() => btnSigup()}>sign up</button>
+          </div>
         ) : (
-          <div className='navbar-profile'>
+          <div className="navbar-profile">
             <img src={assets.profile_icon} alt="" />
             <ul className="navbar-profile-dropdown">
-              <li onClick={() => navigate('/myorders')}><img src={assets.bag_icon} alt="" />Orders</li>
-              <li onClick={logout}><img src={assets.logout_icon} alt="" />Logout</li>
+              <li onClick={() => navigate("/myorders")}>
+                <img src={assets.bag_icon} alt="" />
+                Orders
+              </li>
+              <li onClick={logout}>
+                <img src={assets.logout_icon} alt="" />
+                Logout
+              </li>
             </ul>
           </div>
         )}

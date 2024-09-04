@@ -1,5 +1,6 @@
 .my-orders{
     margin: 50px 0;
+    min-height: 80vh;
 }
 
 .my-orders .container{
@@ -17,6 +18,23 @@
     font-size: 16px;
     padding: 10px 20px;
     color: #454545;
+    border: 1px solid tomato;
+}
+
+.header-category{
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.category{
+    min-height: 30px;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 5px;
+    color: tomato;
+    border-color: tomato;
+    font-weight: 500;
     border: 1px solid tomato;
 }
 

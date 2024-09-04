@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./PlaceOrder.css";
 import { StoreContext } from "../../context/StoreContext";
-import axios from "axios";
+import axiosInstance from "../../utility/axiosInstance";
 import { useNavigate } from "react-router-dom";
 
 // ở đây mình có sử dụng 1 phần html trong cart nhưng
@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 // không giới hạn phạm vi chỉ trong thành phần
 // mà nó được import vào.
 const PlaceOrder = () => {
-  const { getTotalCartAmount, token, food_list, cartItems, url } =
+  const { getTotalCartAmount, token, food_list, cartItems } =
     useContext(StoreContext);
 
   const [data, setData] = useState({
@@ -48,12 +48,13 @@ const PlaceOrder = () => {
     let orderData = {
       address: data,
       items: orderItems,
-      amount: getTotalCartAmount() + 2,
+      amount: getTotalCartAmount() + 50000,
     };
 
-    let response = await axios.post(`${url}/api/order/place`, orderData, {
+    let response = await axiosInstance.post(`/api/order/place`, orderData, {
       headers: { token },
     });
+    // chỉnh là chuyển hướng sang thanh toán stripe
     if (response.data.success) {
       const { session_url } = response.data;
       // Khi sử dụng window.location.replace,
@@ -179,13 +180,13 @@ const PlaceOrder = () => {
             <hr />
             <div className="cart-total-details">
               <p>Delivery Fee</p>
-              <p>${getTotalCartAmount() === 0 ? 0 : 2}</p>
+              <p>${getTotalCartAmount() === 0 ? 0 : 50000}</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <b>Total</b>
               <b>
-                ${getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}
+                ${getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 50000}
               </b>
             </div>
           </div>

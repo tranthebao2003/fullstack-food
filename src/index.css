@@ -25,6 +25,7 @@ a{
   width: 80%;
   margin: 0 auto;
   margin-top: 120px;
+  min-height: 35vh;
 }
 
 @keyframes fadeIn {

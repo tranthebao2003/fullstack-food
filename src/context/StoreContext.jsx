@@ -1,14 +1,22 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+import axiosInstance from "../utility/axiosInstance";
+import { baseURL } from "../utility/axiosInstance";
 
 // sử dụng useContext để truyền dữ liệu từ
 // cha sang con
 export const StoreContext = createContext(null)
 
 const StoreContextProvider = (props) => {
-    const url = 'https://fullstack-food-backend.onrender.com'
+
     const [token, setToken] = useState('')
     const [food_list, setFoodList] = useState([])
+
+    const [loading, setLoading] = useState(false)
+    const [loadingLogin, setLoadingLogin] = useState(false)
+
+    const [signup, setSignup] = useState(false)
+    const [loadingSignup, setLoadingSignup] = useState(false)
 
 // Quản lý tập trung: Thay vì sử dụng 30 useState để quản lý số lượng của 30 sản phẩm, 
 // bạn chỉ cần một useState duy nhất (cartItems). Điều này giúp mã nguồn gọn gàng và dễ 
@@ -42,7 +50,7 @@ const StoreContextProvider = (props) => {
         }
         if(token) {
             // bắt buộc phải có dấu {} bao token nha
-            await axios.post(`${url}/api/cart/add`, {itemId: itemId},{headers:{token}})
+            await axiosInstance.post(`/api/cart/add`, {itemId: itemId})
         }
     }
 
@@ -53,14 +61,26 @@ const StoreContextProvider = (props) => {
         // mà như thế là đã có key rồi
         setCartItems((prev) => ({...prev, [itemId]: prev[itemId] - 1}))
         if(token){
-            await axios.post(`${url}/api/cart/remove`, {itemId: itemId}, {headers: {token}})
+            await axiosInstance.post(`/api/cart/remove`, {itemId: itemId})
         }
     }
 
     const loadCartData = async (token) => {
-        // console.log('loadCartData', `${url}/api/cart/get`)
-        const respone = await axios.get(`${url}/api/cart/get`, {headers: {token}})
-        setCartItems(respone.data.cartData)
+        // cái này bắt buộc phải xét headers riêng bởi vì nếu
+        // dùng axiosInstance như những thằng trên thì lúc
+        // này nó sẽ chưa có headers nên sẽ lỗi
+        const response = await axios.get(`${baseURL}/api/cart/get`, {
+            headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json',
+            }
+        })
+        if(!response.data.cartData){
+            setCartItems({})
+        } else{
+            setCartItems(response.data.cartData)
+        }
+        
     }
 
     // test carItems
@@ -85,8 +105,10 @@ const StoreContextProvider = (props) => {
     }
 
     const fetchFoodList = async () => {
-        const response = await axios.get(`${url}/api/food/list`)
+        setLoading(true)
+        const response = await axiosInstance.get(`/api/food/list`)
         setFoodList(response.data.data)
+        setLoading(false)
     }
 
     useEffect(() => {
@@ -116,10 +138,16 @@ const StoreContextProvider = (props) => {
       addToCart,
       removeFromCart,
       getTotalCartAmount,
-      url,
       token,
       setToken,
-      
+      loading,
+      setLoading,
+      loadingLogin,
+      setLoadingLogin,
+      signup,
+      setSignup,
+      loadingSignup,
+      setLoadingSignup
     };
 
     // value dùng để chứa dữ liệu, khi muốn dùng 

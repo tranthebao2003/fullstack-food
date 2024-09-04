@@ -8,8 +8,9 @@ import FoodItem from '../FoodItem/FoodItem'
 // để biết thêm. Ta thấy component StoreContextProvider
 // bao toàn app rùi.
 
-const FoodDisplay = ({category}) => {
-const {food_list} = useContext(StoreContext)
+const FoodDisplay = ({category, currentItems}) => {
+const food_list = currentItems
+
 
 // ở đây khi all (tức là chưa chọn category nào thì nó trả về all)
 // còn khi đã chọn category rồi thì nó sẽ trả về những category phù hợp thôi
@@ -23,6 +24,8 @@ const {food_list} = useContext(StoreContext)
           }
         })}
       </div>
+
+      {/* pagination */}
     </div>
   );
 }

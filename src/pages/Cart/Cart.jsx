@@ -2,12 +2,13 @@ import React, { useContext } from 'react'
 import './Cart.css'
 import { StoreContext } from '../../context/StoreContext'
 import { useNavigate } from 'react-router-dom'
+import { baseURL } from '../../utility/axiosInstance'
 
 const Cart = () => {
   // cartItems là 1 object trong đó các key là các id của item
   // còn value chính là số lượng item đó
 
-  const{cartItems, food_list, removeFromCart, getTotalCartAmount, url} = useContext(StoreContext)
+  const{cartItems, food_list, removeFromCart, getTotalCartAmount} = useContext(StoreContext)
   const navigate = useNavigate()
 
   return (
@@ -28,7 +29,7 @@ const Cart = () => {
             return (
               <div key={index} >
                 <div className="cart-items-title cart-items-item">
-                  <img src={`${url}/images/${item.image}`} alt="" />
+                  <img src={`${baseURL}/images/${item.image}`} alt="" />
                   <p>{item.name}</p>
                   <p>{item.price} Đ</p>
                   <p>{cartItems[item._id]}</p>
@@ -54,12 +55,12 @@ const Cart = () => {
             <hr />
             <div className="cart-total-details">
               <p>Delivery Fee</p>
-              <p>{getTotalCartAmount() === 0 ? 0:2} Đ</p>
+              <p>{getTotalCartAmount() === 0 ? 0:50000} Đ</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <b>Total</b>
-              <b>{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2} Đ</b>
+              <b>{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 50000} Đ</b>
             </div>
           </div>
           <button onClick={() => navigate('/order')}>PROCEED TO CHECKOUT</button>

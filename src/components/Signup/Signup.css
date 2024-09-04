@@ -1,4 +1,4 @@
-.login-popup{
+.signup-popup{
     position: absolute;;
     top: -20%;
     z-index: 3;
@@ -7,13 +7,13 @@
     background-color: #00000090;
 }
 
-.loading-Login {
+.loading-signup {
     position: relative;
     top: 20%;
     left: 42%
 }
 
-.login-popup-container{
+.signup-popup-container{
     top: 18%;
     /* place-self là một thuộc tính CSS 
     dùng để căn chỉnh một phần tử con trong 
@@ -34,36 +34,36 @@
     font-size: 18px;
 }
 
-.login-popup-title{
+.signup-popup-title{
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: tomato;
 }
 
-.login-popup-title img {
+.signup-popup-title img {
     width: 16px;
     cursor: pointer;
     transition: 0.3s ease-in-out;
 }
 
-.login-popup-title img:hover{
+.signup-popup-title img:hover{
     transform: scale(1.2);
 }
 
-.login-popup-inputs{
+.signup-popup-inputs{
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.login-popup-inputs input{
+.signup-popup-inputs input{
     border: 1px solid tomato;
     padding: 10px;
     border-radius: 4px;
 }
 
-.login-popup-container button{
+.signup-popup-container button{
     padding: 10px;
     border-radius: 4px;
     color: white;
@@ -74,28 +74,28 @@
     transition:  0.35s ease-in-out;
 }
 
-.login-popup-container button:hover{
+.signup-popup-container button:hover{
     background-color: rgb(249, 63, 30);
 }
 
-.login-popup-condition{
+.signup-popup-condition{
     display: flex;
     align-items: start;
     gap: 8px;
     margin-top: -10px;
 }
 
-.login-popup-condition input{
+.signup-popup-condition input{
     margin-top: 4px;
 }
 
-.login-popup p span{
+.signup-popup p span{
     color: tomato;
     font-weight: 500;
     cursor: pointer;
 }
 
-.login-popup p span:hover{
+.signup-popup p span:hover{
     color: rgb(255, 38, 0);
 }
 
@@ -121,23 +121,23 @@
 }
 
 @media (max-width: 1000px) {
-    .login-popup-container{
+    .signup-popup-container{
         top: 16%;
     }
-    .loading-Login {
+    .loading-signup {
         top: 19%;
         left: 39%
     }
 }
 @media (max-width: 750px) {
-    .loading-Login {
+    .loading-signup {
         top: 18%;
         left: 36%
     }
 }
 
 @media (max-width: 600px) {
-    .loading-Login {
+    .loading-signup {
         left: 25%
     }
 }

@@ -51,19 +51,32 @@
 .navbar button{
     position: relative;
     background: transparent;
-    font-size: 18px;
-    border: 1px solid tomato;
-    padding: 10px 30px 12px 30px;
-    border-radius: 14px;
+    font-size: 20px;
+    padding: 10px 20px 12px 20px;
     cursor: pointer;
     overflow: hidden;
     color: tomato;
     transition: 0.3s ease-in-out;
+    border-radius: 4px;
 }
 
-.navbar button:hover{
+.sign-in-up{
+    display: flex;
+}
+
+.sign-up{
+    border: 1px solid tomato;
+}
+
+.navbar .sign-up:hover{
     color: #ffffff;
     background-color: tomato;
+    border-radius: 20px;
+}
+
+.navbar .sign-in:hover{
+    color: rgb(255, 38, 0);
+    transform: scale(1.2);
 }
 
 .navbar .active{
@@ -170,47 +183,43 @@
     width: 20px;
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 1080px) {
     .navbar .logo{
-        width: 140px;
+        width: 130px;
     }
     .navbar-menu{
-        gap: 18px;
-        font-size: 22px;
-    }
-    .navbar-right{
-        gap: 30px;
+        font-size: 18px;
     }
     .navbar-right img {
         width: 22px;
-    }
-    .navbar-right button{
-        padding: 8px 25px;
     }
 }
 
 @media (max-width: 900px) {
     .navbar .logo{
-        width: 120px;
+        width: 100px;
     }
     .navbar-menu{
         gap: 15px;
         font-size: 20px;
     }
-    .navbar-right{
-        gap: 18px;
-    }
     .navbar-right img {
         width: 20px;
     }
     .navbar-right button{
-        padding: 7px 20px;
+        padding: 7px 15px;
         font-size: 15px;
+    }
+    .sign-in-up{
+        gap: 5px;
     }
 }
 
-@media (max-width: 750px) {
+@media (max-width: 830px) {
     .navbar-menu{
         display: none;
+    }
+    .navbar-right button{
+        font-size: 18px;
     }
 }

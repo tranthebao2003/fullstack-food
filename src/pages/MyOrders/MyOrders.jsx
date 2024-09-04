@@ -1,16 +1,17 @@
 import React, { useContext, useEffect,useState } from 'react'
 import './MyOrders.css'
 import { StoreContext } from '../../context/StoreContext'
-import axios from 'axios'
 import { assets } from '../../assets/assets'
+import axiosInstance from '../../utility/axiosInstance'
 
 const MyOrders = () => {
 
-    const {url, token} = useContext(StoreContext)
+    const {token} = useContext(StoreContext)
     const [data, setData] = useState([])
+    const [category, setCategory] = useState('All')
 
     const  fetchOrders = async () => {
-        const response = await axios.post(`${url}/api/order/userorders`, {}, {headers: {token}})
+        const response = await axiosInstance.post(`/api/order/userorders/${category}`, {})
         setData(response.data.data)
     }
 
@@ -18,11 +19,19 @@ const MyOrders = () => {
         if(token){
             fetchOrders()
         }
-    }, [token])
+    }, [token, category])
 
   return (
     <div className='my-orders'>
-      <h2>My Orders</h2>
+      <div className="header-category">
+        <h3>My Orders</h3>
+        <select onChange={(e) => setCategory(e.target.value)} className="category">
+          <option value="All">All</option>
+          <option value="Delivery">Delivery</option>
+          <option value="Food Processing">Food Processing</option>
+          <option value="Out for delivery">Out for delivery</option>
+        </select>
+      </div>
       <div className='container'>
         {data.map((order, index) => {
             return(
@@ -35,7 +44,7 @@ const MyOrders = () => {
                             return item.name + " x " + item.quantity+ ", "
                         }
                     })}</p>
-                    <p>${order.amount}.00</p>
+                    <p>{order.amount} Đ</p>
                     <p>Items: {order.items.length}</p>
                     <p><span>&#x25cf;</span> <b>{order.status}</b></p>
                     <button onClick={() => fetchOrders()}>Track Order</button>
