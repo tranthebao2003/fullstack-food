@@ -37,7 +37,7 @@ const sendEmail = async (email, resetLink) => {
 };
 
 const getEmail = async (req, res, next) => {
-    const frontend_url = 'https://fullstack-food-frontend.onrender.com/'
+    const frontend_url = 'https://fullstack-food-frontend.onrender.com'
     // const frontend_url = 'http://localhost:5173'
     const {email} = req.body
 
