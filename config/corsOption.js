@@ -2,7 +2,8 @@
 export const allowedOrigin = [
     'http://localhost:5173',
     'http://localhost:5174',
-    'https://fullstack-food-frontend.onrender.com'
+    'https://fullstack-food-frontend.onrender.com',
+    'https://fullstack-food-admin.onrender.com'
 ]
 
 const corsOptions = {
