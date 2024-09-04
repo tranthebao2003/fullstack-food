@@ -28,7 +28,7 @@ const Verify = () => {
 
   useEffect(() => {
     verifyPayment()
-  }, [])
+  }, [success, orderId])
 
   return (
     <div className='verify'>
