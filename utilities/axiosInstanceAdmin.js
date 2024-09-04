@@ -3,8 +3,8 @@ import { jwtDecode } from "jwt-decode";
 import dayjs from "dayjs";
 
 
-// const baseURL = 'https://fullstack-food-backend.onrender.com'
-export const baseURL = "http://localhost:4000";
+const baseURL = 'https://fullstack-food-backend.onrender.com'
+// export const baseURL = "http://localhost:4000";
 
 
 let token = localStorage?.getItem("token") ? localStorage.getItem("token") : null
