@@ -22,12 +22,16 @@ const axiosInstanceAdmin = axios.create({
 
 axiosInstanceAdmin.interceptors.request.use(async (req) => {
 
-  // if(!token){
-  //   token = localStorage?.getItem("token") ? localStorage.getItem("token") : null
-  //   req.headers.Authorization = `Bearer ${token}`;
-  // }
+  if(!token){
+    token = localStorage?.getItem("token") ? localStorage.getItem("token") : null
+    req.headers.Authorization = `Bearer ${token}`;
+  }
+
+  const user = token ? jwtDecode(token) : null;
   
-  const user = jwtDecode(token)  
+  if (!user) {
+    return req;
+  }
 
   if (req.url.includes("/api/refresh") || req.url.includes("/api/admin/login")) {
     return req;
