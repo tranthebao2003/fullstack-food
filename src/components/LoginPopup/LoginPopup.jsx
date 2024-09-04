@@ -3,9 +3,9 @@ import "./LoginPopup.css";
 import { assets } from "../../assets/assets";
 import { StoreContext } from '../../Context/StoreContext';
 import { Rings } from "react-loader-spinner";
-import axiosInstance from "../../../../frontend/src/utility/axiosInstance";
+import axiosInstance from "../../../utilities/axiosInstanceAdmin";
 
-const LoginPopup = ({ setShowLogin }) => {
+const LoginPopup = () => {
   const { setToken,loadingLogin, setLoadingLogin} =
     useContext(StoreContext);
   
