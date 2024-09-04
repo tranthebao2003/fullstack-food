@@ -51,9 +51,7 @@ const PlaceOrder = () => {
       amount: getTotalCartAmount() + 50000,
     };
 
-    let response = await axiosInstance.post(`/api/order/place`, orderData, {
-      headers: { token },
-    });
+    let response = await axiosInstance.post(`/api/order/place`, orderData);
     // chỉnh là chuyển hướng sang thanh toán stripe
     if (response.data.success) {
       const { session_url } = response.data;

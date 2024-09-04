@@ -56,7 +56,7 @@ const LoginPopup = ({ setShowLogin }) => {
       if(currState === 'Login') {
         setToken(response.data.token);
         localStorage.setItem("token", response.data.token);
-        console.log('response.data.token in loginPopup: ', response.data.token)
+        // console.log('response.data.token in loginPopup: ', response.data.token)
         await loadCartData(response.data.token);
       } else{
         alert(response.data.message)
