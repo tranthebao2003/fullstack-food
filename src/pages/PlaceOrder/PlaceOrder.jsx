@@ -62,7 +62,8 @@ const PlaceOrder = () => {
       // bằng cách nhấn nút "Back" trên trình duyệt.
       window.location.replace(session_url);
     } else {
-      alert("Error");
+      alert("Lỗi! vui lòng thử lại");
+      console.log(`${response.data.message}`)
     }
   };
 
