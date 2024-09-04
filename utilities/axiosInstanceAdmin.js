@@ -7,7 +7,7 @@ export const baseURL = 'https://fullstack-food-backend.onrender.com'
 // export const baseURL = "http://localhost:4000";
 
 
-let token = localStorage?.getItem("token") ? localStorage.getItem("token") : null
+let token = localStorage?.getItem("token")
 // console.log('token in axiosInstance', token)
 
 
@@ -22,14 +22,14 @@ const axiosInstanceAdmin = axios.create({
 
 axiosInstanceAdmin.interceptors.request.use(async (req) => {
 
-  if(!token){
-    token = localStorage?.getItem("token") ? localStorage.getItem("token") : null
-    req.headers.Authorization = `Bearer ${token}`;
-  }
+  // if(!token){
+  //   token = localStorage?.getItem("token") ? localStorage.getItem("token") : null
+  //   req.headers.Authorization = `Bearer ${token}`;
+  // }
   
   const user = jwtDecode(token)  
 
-  if (req.url.includes("/api/refresh")) {
+  if (req.url.includes("/api/refresh") || req.url.includes("/api/admin/login")) {
     return req;
   }
 
