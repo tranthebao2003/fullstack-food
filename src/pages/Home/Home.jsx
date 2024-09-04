@@ -17,11 +17,11 @@ const Home = () => {
   const [itemOffset, setItemOffset] = useState(0)
   const itemsPerPage = 10
   const endOffset = itemOffset + itemsPerPage
-  const currentItems = food_list.slice(itemOffset, endOffset)
-  const pageCount = Math.ceil(food_list.length/itemsPerPage)
+  const currentItems = food_list?.slice(itemOffset, endOffset)
+  const pageCount = Math.ceil(food_list?.length/itemsPerPage)
 
   const handlePageClick = (event) => {
-    const newOffset = (event.selected *itemsPerPage) % food_list.length
+    const newOffset = (event.selected *itemsPerPage) % food_list?.length
     setItemOffset(newOffset)
   }
 

@@ -2,7 +2,7 @@ import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import dayjs from "dayjs";
 
-const baseURL = 'https://fullstack-food-backend.onrender.com'
+export const baseURL = 'https://fullstack-food-backend.onrender.com'
 // export const baseURL = "http://localhost:4000";
 
 

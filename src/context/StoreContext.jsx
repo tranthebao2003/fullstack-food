@@ -97,7 +97,7 @@ const StoreContextProvider = (props) => {
         for(const item in cartItems){
             if (cartItems[item] > 0) {
               // trả về object thỏa đk
-              let itemInfo = food_list.find((product) => product._id === item);
+              let itemInfo = food_list?.find((product) => product._id === item);
               totalAmount += itemInfo.price * cartItems[item];
             }
         }
